@@ -1,0 +1,17 @@
+---
+- hosts: all
+  tasks:
+    - name: Ping hosts
+      ansible.builtin.ping:
+
+- name: Setup Server
+  hosts: server
+  become: true
+  roles:
+    - essentials
+    - docker
+
+- name: Deploy Applications
+  hosts: server
+  roles:
+    - applications
